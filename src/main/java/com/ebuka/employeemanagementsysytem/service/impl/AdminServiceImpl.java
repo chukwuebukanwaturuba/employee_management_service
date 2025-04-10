@@ -39,6 +39,18 @@ import static com.ebuka.employeemanagementsysytem.enums.Gender.FEMALE;
 import static com.ebuka.employeemanagementsysytem.enums.Gender.MALE;
 import static com.ebuka.employeemanagementsysytem.enums.Role.ADMIN;import static com.ebuka.employeemanagementsysytem.enums.Status.ACTIVE;
 import static com.ebuka.employeemanagementsysytem.enums.Status.DELETED;
+/*
+ * This class implements the AdminService interface and provides functionality for managing users within an employee management system.
+ * It supports the following operations:
+ * 1. Registering an admin user with a unique employee ID and role as ADMIN, with associated password encryption and default department set to HR.
+ * 2. Adding a new employee to the system with role-based assignment, department selection, and email notifications via RabbitMQ.
+ * 3. Updating employee details such as name, phone number, department, role, and gender.
+ * 4. Deleting an employee by setting their status to DELETED, with checks to prevent deletion of an admin.
+ * 5. Reactivating a deleted employee, sending a notification to the employee about the reactivation.
+ *
+ * The class utilizes services such as RabbitMQ for email notifications and password encryption for secure handling of user credentials.
+ * It also ensures proper role-based authorization to prevent unauthorized operations by verifying the current user's role.
+ */
 
 @RequiredArgsConstructor
 @Service
