@@ -33,7 +33,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Build Docker image
-        run: docker build -t yourdockerhubusername/employee-management-system:latest .
+        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/employee-management-system:latest .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -42,4 +42,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Push Docker image to Docker Hub
-        run: docker push yourdockerhubusername/employee-management-system:latest
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/employee-management-system:latest
