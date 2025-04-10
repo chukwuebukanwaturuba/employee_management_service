@@ -77,12 +77,20 @@ public class AdminServiceImpl implements AdminService {
         if (existingAdminOp.isPresent()) {
             existingAdmin = existingAdminOp.get();
             if (existingAdmin.getStatus().equals(DELETED)) {
-                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR);
+                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR, "User is marked as deleted.");
             } else if (existingAdmin.getRole().equals(ADMIN)) {
-                LogUtils.infoLog("is customer present?, " + existingAdminOp.isPresent());
-                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR);
+                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR, "Admin user already exists.");
             }
         }
+//        if (existingAdminOp.isPresent()) {
+//            existingAdmin = existingAdminOp.get();
+//            if (existingAdmin.getStatus().equals(DELETED)) {
+//                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR);
+//            } else if (existingAdmin.getRole().equals(ADMIN)) {
+//                LogUtils.infoLog("is customer present?, " + existingAdminOp.isPresent());
+//                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR);
+//            }
+//        }
         Users users = createAdmin(registerRequest);
 
 
@@ -102,7 +110,7 @@ public class AdminServiceImpl implements AdminService {
         if (existingUserOp.isPresent()) {
             Users existingUser = existingUserOp.get();
             if (!existingUser.getStatus().equals(DELETED)) {
-                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR);
+                throw new EMPLOYEEAPPException(ErrorStatus.USER_ALL_EXISTS_ERROR, "User exists already.");
             }
         }
 
