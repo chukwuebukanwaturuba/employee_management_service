@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +26,8 @@ public class OpenApiConfig {
                 .info(new Info().title("Employee Management System API")
                         .description("API documentation for Employee Management System")
                         .version("v1.0.0")
-                        .license(new License().name("Apache 2.0").url("https://springdoc.org")));
+                        .license(new License().name("Apache 2.0").url("https://springdoc.org")))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }
 
 
