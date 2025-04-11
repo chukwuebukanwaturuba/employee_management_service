@@ -2,12 +2,12 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
     container_name: employee-management-app
     ports:
       - "8080:8080"
     environment:
-      - ACTIVE_PROFILE=dev
+#      - ACTIVE_PROFILE=dev
       - DB_URL=jdbc:postgresql://db:5432/ebuka
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
